@@ -1,0 +1,6 @@
+{
+  "EXT5E.HitDC": "Hit / DC",
+
+  "EXT5E.limitActionsToCantrips": "Limit Actions to Cantrips",
+  "EXT5E.limitActionsToCantripsHint": "Instead of showing all spells that deal damage in the Actions tab, limit it to only cantrips. This is the default D&DBeyond behavior."
+}

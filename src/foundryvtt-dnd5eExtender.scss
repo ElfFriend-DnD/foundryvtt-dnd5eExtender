@@ -1,0 +1,13 @@
+@import './styles/variables.scss';
+
+// ensure our styles take precedence over 5e default
+.dnd5e-extender {
+  // use the active whetstone global theme if there is one
+  --accent-text: var(--Whetstone-fg-secondary, #4b4a44);
+  --color: var(--Whetstone-fg-primary, #191813);
+  --accent-gray: var(--Whetstone-border-primary-darker, #c9c7b8);
+  --groove-gray: var(--Whetstone-border-primary, #eeede0);
+  --highlight: var(--Whetstone-text-highlight, #c53131);
+  --light-gray: var(--Whetstone-border-secondary, #b5b3a4);
+  --tertiary-text: var(--Whetstone-fg-tertiary-half, #7a7971);
+}
