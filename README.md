@@ -8,6 +8,11 @@
 
 Theoretically, this module provides a placable reusable "component" which details all of the actions a given Character Actor can take.
 
+## Warnings
+
+This can seriously fuck up your game. If you're planning on running a game with alternative ability scores or skills, do not add and remove them repeatedly. This is intended to be a one-time set and forget modification. After you've set an ability score, removing it carries some risks.
+
+
 ## Installation
 
 Module JSON:

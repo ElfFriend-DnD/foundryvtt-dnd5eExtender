@@ -27,8 +27,15 @@ Hooks.once('init', async function () {
   game.dnd5e.config.abilities['san'] = 'Sanity';
   game.dnd5e.config.abilityAbbreviations['san'] = 'san';
 
+  // define honor as ability
+  game.dnd5e.config.abilities['hon'] = 'Honor';
+  game.dnd5e.config.abilityAbbreviations['hon'] = 'hon';
+
   // define technology as a skill
   game.dnd5e.config.skills['tec'] = 'Technology';
+
+  // define Repair as a skill
+  game.dnd5e.config.skills['rep'] = 'Repair';
 
   // add our custom abilities to 5eActor data model
   libWrapper.register(
@@ -44,9 +51,11 @@ Hooks.once('init', async function () {
       // add sanity to the 5eActor data model
       const abilities = this._data.data.abilities;
       abilities['san'] = { value: 10, proficient: 0, ...abilities['san'] };
+      abilities['hon'] = { value: 10, proficient: 0, ...abilities['hon'] };
 
       const skills = this._data.data.skills;
       skills['tec'] = { value: 0, ability: 'int', ...skills['tec'] };
+      skills['rep'] = { value: 0, ability: 'int', ...skills['rep'] };
 
       return prepareData();
     },
