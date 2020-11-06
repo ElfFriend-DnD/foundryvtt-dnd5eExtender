@@ -22,6 +22,12 @@
       "path": "lang/en.json"
     }
   ],
+  "dependencies": [
+    {
+      "name": "lib-wrapper",
+      "version": "1.0.5"
+    }
+  ],
   "minimumCoreVersion": "0.7.5",
   "compatibleCoreVersion": "0.7.5",
   "bugs": "https://github.com/ElfFriend-DnD/foundryvtt-dnd5eExtender/issues",
