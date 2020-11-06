@@ -32,21 +32,8 @@ Hooks.once('init', async function () {
   game.dnd5e.config.abilities['san'] = 'Sanity';
   game.dnd5e.config.abilityAbbreviations['san'] = 'san';
 
-  // RED HERRING
-  libWrapper.register(
-    MODULE_ID,
-    'game.dnd5e.entities.Actor5e.prototype._prepareCharacterData',
-    function (_prepareCharacterData, actorData) {
-      debugger;
-
-      log(false, 'extend _prepareCharacterData', {
-        actorData,
-      });
-
-      return _prepareCharacterData(actorData);
-    },
-    'WRAPPER'
-  );
+  // define technology as a skill
+  game.dnd5e.config.skills['tec'] = 'Technology';
 
   // add our custom abilities to 5eActor data model
   libWrapper.register(
@@ -60,8 +47,11 @@ Hooks.once('init', async function () {
       });
 
       // add sanity to the 5eActor data model
-      const abl = this._data.data.abilities;
-      abl['san'] = abl['san'] || { value: 10, proficient: 0 };
+      const abilities = this._data.data.abilities;
+      abilities['san'] = abilities['san'] || { value: 10, proficient: 0 };
+
+      const skills = this._data.data.skills;
+      skills['tec'] = skills['tec'] || { value: 0, ability: 'int' };
 
       return prepareData();
     },
