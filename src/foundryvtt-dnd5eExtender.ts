@@ -5,11 +5,6 @@ import { MODULE_ABBREV, MODULE_ID, MySettings } from './module/constants';
 import { log } from './module/helpers';
 import { libWrapper } from './module/libWrapperShim';
 
-/**
- * Actor Creation:
- *
- */
-
 /* ------------------------------------ */
 /* Initialize module					*/
 /* ------------------------------------ */
@@ -48,10 +43,10 @@ Hooks.once('init', async function () {
 
       // add sanity to the 5eActor data model
       const abilities = this._data.data.abilities;
-      abilities['san'] = abilities['san'] || { value: 10, proficient: 0 };
+      abilities['san'] = { value: 10, proficient: 0, ...abilities['san'] };
 
       const skills = this._data.data.skills;
-      skills['tec'] = skills['tec'] || { value: 0, ability: 'int' };
+      skills['tec'] = { value: 0, ability: 'int', ...skills['tec'] };
 
       return prepareData();
     },
