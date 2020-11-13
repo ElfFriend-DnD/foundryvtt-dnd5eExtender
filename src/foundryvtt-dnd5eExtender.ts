@@ -4,6 +4,8 @@ import { preloadTemplates } from './module/preloadTemplates';
 import { MODULE_ABBREV, MODULE_ID, MySettings } from './module/constants';
 import { log } from './module/helpers';
 import { libWrapper } from './module/libWrapperShim';
+import { extendSkills } from './module/skillExtender';
+import { extendAbilityScores } from './module/abilityScoreExtender';
 
 /* ------------------------------------ */
 /* Initialize module					*/
@@ -19,48 +21,8 @@ Hooks.once('init', async function () {
   // Preload Handlebars templates
   await preloadTemplates();
 
-  // const dnd5e = game.dnd5e;
-
-  log(false, { dnd5e: game.dnd5e });
-
-  // define sanity as ability
-  game.dnd5e.config.abilities['san'] = 'Sanity';
-  game.dnd5e.config.abilityAbbreviations['san'] = 'san';
-
-  // define honor as ability
-  game.dnd5e.config.abilities['hon'] = 'Honor';
-  game.dnd5e.config.abilityAbbreviations['hon'] = 'hon';
-
-  // define technology as a skill
-  game.dnd5e.config.skills['tec'] = 'Technology';
-
-  // define Repair as a skill
-  game.dnd5e.config.skills['rep'] = 'Repair';
-
-  // add our custom abilities to 5eActor data model
-  libWrapper.register(
-    MODULE_ID,
-    'game.dnd5e.entities.Actor5e.prototype.prepareData',
-    function (prepareData) {
-      debugger;
-
-      log(false, 'extend prepareData', {
-        _data: this._data,
-      });
-
-      // add sanity to the 5eActor data model
-      const abilities = this._data.data.abilities;
-      abilities['san'] = { value: 10, proficient: 0, ...abilities['san'] };
-      abilities['hon'] = { value: 10, proficient: 0, ...abilities['hon'] };
-
-      const skills = this._data.data.skills;
-      skills['tec'] = { value: 0, ability: 'int', ...skills['tec'] };
-      skills['rep'] = { value: 0, ability: 'int', ...skills['rep'] };
-
-      return prepareData();
-    },
-    'WRAPPER'
-  );
+  extendAbilityScores();
+  extendSkills();
 
   Hooks.call(`DND5eExtendedReady`);
 });
