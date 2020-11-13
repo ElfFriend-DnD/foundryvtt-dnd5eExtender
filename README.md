@@ -24,16 +24,28 @@ https://github.com/ElfFriend-DnD/foundryvtt-dnd5eCharacterActions/releases/lates
 ## Gallery
 
 
-## Added Scene Config Options
+## Configuration
 
 | **Name**                      | Description                                                                                                                                      |
 | ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
 | **Limit Actions to Cantrips** | Path to the file that will be used for the Unexplored Fog. This image should be the same size as your background image or stretching will occur. |
 
 
-### Compatibility
+## Compatibility
 
-I'm honestly not sure how well this will play with modules that affect character sheets, I'll try to test as many as possible but if something is obviously breaking please create and issue here and I'll see what I can do.
+### Character Sheet Support
+| **Name**                                                                                                 |  Works  | Notes |
+| -------------------------------------------------------------------------------------------------------- | :-----: | ----- |
+| [Compact DnDBeyond 5e Character Sheet](https://github.com/ElfFriend-DnD/foundryvtt-compactBeyond5eSheet) | :shrug: |       |
+| [D&D 5e OGL Character Sheet](https://github.com/ElfFriend-DnD/foundryvtt-5eOGLCharacterSheet)            | :shrug: |       |
+| [Tidy 5e Sheet](https://github.com/sdenec/tidy5e-sheet)                                                  | :shrug: |       |
+| [DNDBeyond Character Sheet for 5E](https://gitlab.com/riccisi/foundryvtt-magic-items)                    | :shrug: |       |
+| [Sky's Alternate D&D 5e Character Sheet](https://github.com/Sky-Captain-13/foundry/tree/master/alt5e)    | :shrug: |       |
+
+
+### Other Compatibilities
+
+I'm honestly not sure how well this will play with modules that make assumptions about the 5e system, I'll try to test as many as possible but if something is obviously breaking please create and issue here and I'll see what I can do.
 
 | **Name**                                                                    |  Works  | Notes |
 | --------------------------------------------------------------------------- | :-----: | ----- |
