@@ -1,0 +1,33 @@
+{{log abilities}}
+
+<tr>
+  <td>
+    <input type="text" name="skills.{{index}}.title" value="{{item.title}}" data-dtype="String">
+  </td>
+  <td>
+    <input type="text" name="skills.{{index}}.abbreviation" {{#unless item.isEditable}}disabled{{/unless}}
+      value="{{item.abbreviation}}" data-dtype="String">
+  </td>
+  <td>
+    {{log item (lookup item index) (lookup (lookup 'skills' index) 'ability')}}
+    <select name="skills.{{index}}.ability" data-type="String" value="{{item.ability}}">
+      {{#select item.ability}}
+      <option value="">{{localize "DND5E.None"}}</option>
+      {{#each abilities as |abl a|}}
+      {{log abl a}}
+      <option value="{{a}}">{{abl}}</option>
+      {{/each}}
+      {{/select}}
+    </select>
+  </td>
+  <td class="textCenter">
+    <button type="button" title="Delete" class='delete-row' data-row-index="{{index}}"
+      {{#unless item.isEditable}}disabled{{/unless}}>
+      {{#if item.isEditable}}
+      <i class="fa fa-trash"></i>
+      {{else}}
+      <i class="fa fa-lock" title="{{localize 'EXT5E.warnings.cannotDelete'}}"></i>
+      {{/if}}
+    </button>
+  </td>
+</tr>

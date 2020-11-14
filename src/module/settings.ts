@@ -82,32 +82,42 @@ export class Dnd5eExtendersSettings extends FormApplication {
       customSkills,
     });
 
-    const hydratedAbilities = customAbilities.map((ability) => mergeObject(ability, { isEditable: false }));
+    const hydratedAbilities = customAbilities.map((ability) =>
+      mergeObject(ability, { isEditable: CONFIG[MODULE_ID].debug })
+    );
+
+    const hydratedSkills = customSkills.map((skill) => mergeObject(skill, { isEditable: CONFIG[MODULE_ID].debug }));
 
     return {
-      skills: customSkills,
-      abilities: hydratedAbilities,
+      customSkills: hydratedSkills,
+      customAbilities: hydratedAbilities,
+      abilities: game.dnd5e.config.abilities,
     };
   }
 
   getData() {
     let data = super.getData();
     data.settings = this.getSettingsData();
+
+    log(false, data);
     return data;
   }
 
   activateListeners(html) {
     super.activateListeners(html);
 
-    $('.add-row').on('click', async (e) => {
+    log(false, 'activateListeners', {
+      html,
+    });
+
+    const handleNewRowClick = async (currentTarget: JQuery<any>) => {
       log(false, 'add row clicked', {
-        table: e.currentTarget.dataset.table,
-        e,
+        data: currentTarget.data(),
       });
 
-      const table = e.currentTarget.dataset.table;
+      const table = currentTarget.data().table;
 
-      const tableElement = e.currentTarget.previousElementSibling;
+      const tableElement = currentTarget.siblings('table');
       const tbodyElement = $(tableElement).find('tbody');
 
       const newRowData = {
@@ -117,34 +127,51 @@ export class Dnd5eExtendersSettings extends FormApplication {
           isEditable: true,
           title: '',
         },
+        abilities: game.dnd5e.config.abilities,
       };
 
-      const newRow = $(await renderTemplate(TEMPLATES.settingsAbilitiesTr, newRowData));
+      const newRow = $(await renderTemplate(TEMPLATES[table].tableRow, newRowData));
       // render a new row at the end of tbody
       tbodyElement.append(newRow);
-    });
+    };
 
-    $('.delete-row').on('click', (e) => {
+    const handleDeleteRowClick = (currentTarget: JQuery<any>) => {
       log(false, 'delete row clicked', {
-        table: e.currentTarget.dataset.table,
-        e,
+        currentTarget,
       });
 
-      const target = e.currentTarget;
-      $(target).parentsUntil('tbody').remove();
+      currentTarget.parentsUntil('tbody').remove();
+    };
+
+    html.on('click', (e) => {
+      const currentTarget = $(e.target).closest('button')[0];
+
+      if (!currentTarget) {
+        return;
+      }
+
+      const wrappedCurrentTarget = $(currentTarget);
+
+      log(false, 'a button was clicked', { e, currentTarget });
+
+      if (wrappedCurrentTarget.hasClass('add-row')) {
+        handleNewRowClick(wrappedCurrentTarget);
+      }
+      if (wrappedCurrentTarget.hasClass('delete-row')) {
+        handleDeleteRowClick(wrappedCurrentTarget);
+      }
     });
   }
 
   async _updateObject(ev, formData) {
     const customAbilities = game.settings.get(MODULE_ID, MySettings.customAbilities);
+    const customSkills = game.settings.get(MODULE_ID, MySettings.customSkills);
     const data = expandObject(formData);
 
     log(false, {
       formData,
       data,
     });
-
-    const newCustomAbilities = mergeObject(customAbilities, Object.values(data.abilities));
 
     // if any of our warnings are not checked, throw
     if (Object.values(data.warning).includes(false)) {
@@ -155,56 +182,14 @@ export class Dnd5eExtendersSettings extends FormApplication {
       throw errorMessage;
     }
 
-    const newAbilities = Object.values(data.abilities);
+    const newCustomAbilities = mergeObject(customAbilities, Object.values(data.abilities || {}));
+    const newCustomSkills = Object.values(data.skills || {});
 
     log(true, 'Warnings accepted, setting settings.', {
       abilities: newCustomAbilities,
-      skills: data.skills,
+      skills: newCustomSkills,
     });
-    game.settings.set(MODULE_ID, MySettings.customSkills, data.skills);
     game.settings.set(MODULE_ID, MySettings.customAbilities, newCustomAbilities);
+    game.settings.set(MODULE_ID, MySettings.customSkills, newCustomSkills);
   }
-
-  // get the table associated to a button (same disposition, same dType)
-  // private _getAssociatedTable($button: any, $context: any): any {
-  //   const disposition = $button.attr('disposition');
-  //   const dType = $button.attr('dType');
-  //   const $table = $context.find(`.${Utils.moduleName}-table[disposition=${disposition}][dType=${dType}]`);
-  //   return { disposition, dType, $table };
-  // }
-
-  // // the add button click event, adds a new line on the associated table
-  // private async _addButtonClickEvent(ev: any): Promise<void> {
-  //   // because we take the button from ev.target, we need to make sure it's actually the button
-  //   // and not the span or icon
-  //   const $button = $(ev.target).closest('button');
-
-  //   const $context = $button?.parent()?.parent(); // the parent form
-  //   if (!$context.length) return;
-
-  //   const { disposition, dType, $table } = this._getAssociatedTable($button, $context);
-  //   const $tbody = $table.find('tbody');
-  //   const $rows = $tbody.find(`.${Utils.moduleName}-row`);
-  //   const lastIndex = $rows.length ? parseInt($rows.last().attr('index')) || 0 : 0;
-
-  //   const data = {
-  //     moduleName: Utils.moduleName,
-  //     index: lastIndex + 1,
-  //     disposition,
-  //     type: dType,
-  //     item: {
-  //       color: Utils.randomColorPicker(),
-  //     },
-  //   };
-
-  //   const $newRow = $(await renderTemplate(CONSTANTS.TEMPLATES.TOOLTIP_EDITOR_TABLE_ROW, data));
-  //   $tbody.append($newRow);
-
-  //   // Make this... not shit... maybe...
-  //   // Future me here... this is not what I was talking about... but It's future future me problem now...
-  //   // Future future me... I ended up just copy pasting this from the old settings
-  //   $newRow.find(`.${Utils.moduleName}-row_button.delete`).on('click', () => {
-  //     $tbody.find(`.${Utils.moduleName}-row[index=${lastIndex + 1}]`).remove();
-  //   });
-  // }
 }

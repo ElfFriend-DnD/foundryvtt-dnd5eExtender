@@ -4,8 +4,14 @@ export const MODULE_ABBREV = 'EXT5E';
 export const TEMPLATES = {
   settings: `modules/${MODULE_ID}/templates/settings.hbs`,
   settingSubmit: `modules/${MODULE_ID}/templates/settings-submit.hbs`,
-  settingsAbilities: `modules/${MODULE_ID}/templates/settings-abilities.hbs`,
-  settingsAbilitiesTr: `modules/${MODULE_ID}/templates/settings-abilities-tr.hbs`,
+  abilities: {
+    table: `modules/${MODULE_ID}/templates/abilities/settings-abilities.hbs`,
+    tableRow: `modules/${MODULE_ID}/templates/abilities/settings-abilities-tr.hbs`,
+  },
+  skills: {
+    table: `modules/${MODULE_ID}/templates/skills/settings-skills.hbs`,
+    tableRow: `modules/${MODULE_ID}/templates/skills/settings-skills-tr.hbs`,
+  },
 };
 
 export enum MySettings {

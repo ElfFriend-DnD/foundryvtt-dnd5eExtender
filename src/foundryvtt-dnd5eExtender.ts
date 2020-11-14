@@ -16,7 +16,7 @@ Hooks.once('init', async function () {
   $('body').addClass('dnd5e-extender');
 
   // Preload Handlebars templates
-  await loadTemplates(Object.values(TEMPLATES));
+  await loadTemplates(Object.values(flattenObject(TEMPLATES)));
 
   // Register custom module settings
   await registerSettings();

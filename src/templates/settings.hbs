@@ -1,14 +1,17 @@
 <form class="{{classes}}" autocomplete="off">
   <nav class="sheet-tabs tabs">
-    <a class='item' data-tab='warning'>Warning</a>
+    <a class='item' data-tab='skills'>Skills</a>
     <a class='item' data-tab='abilities'>Ability Scores</a>
   </nav>
 
-  <section class='tab' data-tab='warning'>
-    {{> 'modules/dnd5e-extender/templates/settings-submit.hbs'}}
+  <section class='tab' data-tab='skills'>
+    {{> 'modules/dnd5e-extender/templates/skills/settings-skills.hbs' skills=settings.customSkills abilities=settings.abilities}}
   </section>
 
   <section class='tab' data-tab='abilities'>
-    {{> 'modules/dnd5e-extender/templates/settings-abilities.hbs' abilities=settings.abilities}}
+    {{> 'modules/dnd5e-extender/templates/abilities/settings-abilities.hbs' abilities=settings.customAbilities}}
   </section>
+
+  {{> 'modules/dnd5e-extender/templates/settings-submit.hbs'}}
+
 </form>

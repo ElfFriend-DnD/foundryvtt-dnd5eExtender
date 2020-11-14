@@ -1,0 +1,22 @@
+{{log skills}}
+
+<table>
+  <thead>
+    <tr>
+      <th>Label</th>
+      <th>Abbreviation</th>
+      <th>Ability</th>
+      <th>Delete</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    {{#each skills}}
+    {{> 'modules/dnd5e-extender/templates/skills/settings-skills-tr.hbs' index=@index item=this abilities=../abilities}}
+    {{/each}}
+  </tbody>
+</table>
+
+<button type="button" data-table="skills" class="add-row">
+  <i class="fa fa-plus"></i> <span>{{localize 'token-tooltip-alt.buttons.add'}}</span>
+</button>
