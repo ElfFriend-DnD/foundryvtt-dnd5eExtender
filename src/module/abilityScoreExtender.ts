@@ -1,9 +1,11 @@
 import { MODULE_ABBREV, MODULE_ID, MySettings } from './constants';
 import { log } from './helpers';
-import { libWrapper } from './libWrapperShim';
 
-export function extendAbilityScores() {
-  log(true, 'Activating Custom Ability Scores');
+/**
+ * Iterates over the user-defined ability scores and defines them in the expected game.dnd5e.config objects
+ */
+export function defineAbilityScores() {
+  log(true, 'Defining Custom Ability Scores');
 
   // define sanity as ability
   game.dnd5e.config.abilities['san'] = 'Sanity';
@@ -12,23 +14,19 @@ export function extendAbilityScores() {
   // define honor as ability
   game.dnd5e.config.abilities['hon'] = 'Honor';
   game.dnd5e.config.abilityAbbreviations['hon'] = 'hon';
+}
 
-  // add our custom skills to 5eActor data model
-  libWrapper.register(
-    MODULE_ID,
-    'game.dnd5e.entities.Actor5e.prototype.prepareData',
-    function (prepareData) {
-      log(false, 'extending prepareData with abilities information', {
-        _data: this._data,
-      });
+/**
+ * Iterates over the user-defined ability scores and adds them to the dnd5e actor data model
+ */
+export function extendPrepareDataWithAbilities() {
+  log(true, 'Appending Custom Abilities to dnd5e Data Model');
+  log(false, 'extending prepareData with abilities information', {
+    _data: this._data,
+  });
 
-      // add sanity to the 5eActor data model
-      const abilities = this._data.data.abilities;
-      abilities['san'] = { value: 10, proficient: 0, ...abilities['san'] };
-      abilities['hon'] = { value: 10, proficient: 0, ...abilities['hon'] };
-
-      return prepareData();
-    },
-    'WRAPPER'
-  );
+  // add sanity to the 5eActor data model
+  const abilities = this._data.data.abilities;
+  abilities['san'] = { value: 10, proficient: 0, ...abilities['san'] };
+  abilities['hon'] = { value: 10, proficient: 0, ...abilities['hon'] };
 }
