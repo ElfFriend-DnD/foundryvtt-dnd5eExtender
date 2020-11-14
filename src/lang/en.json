@@ -6,6 +6,8 @@
       "update": "I should not update the dnd5e system without first checking that this module is compatible.",
       "deactivate": "If I ever deactivate this module my world will break.",
       "cannotDelete": "You cannot delete something which has already been injected."
-    }
+    },
+    "debugMode": "Debug Mode",
+    "debugModeHint": "There are even less safegaurds against destroying your world in debug mode. Do not use this unless you have no actors in your world and do not mind having to recreate it in its entirety."
   }
 }

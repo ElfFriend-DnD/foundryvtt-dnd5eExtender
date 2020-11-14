@@ -17,6 +17,7 @@ export const TEMPLATES = {
 export enum MySettings {
   customAbilities = 'custom-abilities',
   customSkills = 'custom-skills',
+  debugMode = 'debug-mode',
 }
 
 export enum MyFlags {}

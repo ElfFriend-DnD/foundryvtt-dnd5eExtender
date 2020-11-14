@@ -21,8 +21,6 @@ export function defineAbilityScores() {
  * Iterates over the user-defined ability scores and adds them to the dnd5e actor data model
  */
 export function extendPrepareDataWithAbilities() {
-  log(true, 'Appending Custom Abilities to dnd5e Data Model');
-
   const customAbilities = game.settings.get(MODULE_ID, MySettings.customAbilities);
 
   log(true, 'Appending Custom Abilities to dnd5e Data Model', {

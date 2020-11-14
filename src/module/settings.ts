@@ -1,6 +1,5 @@
 import { MySettings, MODULE_ID, MODULE_ABBREV, TEMPLATES } from './constants';
 import { log } from './helpers';
-import { defineSkills } from './skillExtender';
 
 export const registerSettings = function () {
   // debug use
@@ -28,6 +27,17 @@ export class Dnd5eExtendersSettings extends FormApplication {
       icon: 'fas fa-hammer',
       type: Dnd5eExtendersSettings,
       restricted: true,
+    });
+
+    game.settings.register(MODULE_ID, MySettings.debugMode, {
+      default: CONFIG[MODULE_ID]?.debug,
+      name: `${MODULE_ABBREV}.debugMode`,
+      type: Boolean,
+      config: true,
+      hint: `${MODULE_ABBREV}.debugModeHint`,
+      onChange: (value) => {
+        CONFIG[MODULE_ID] = { debug: value };
+      },
     });
 
     game.settings.register(MODULE_ID, MySettings.customAbilities, {
@@ -86,10 +96,8 @@ export class Dnd5eExtendersSettings extends FormApplication {
       mergeObject(ability, { isEditable: CONFIG[MODULE_ID].debug })
     );
 
-    const hydratedSkills = customSkills.map((skill) => mergeObject(skill, { isEditable: CONFIG[MODULE_ID].debug }));
-
     return {
-      customSkills: hydratedSkills,
+      customSkills: customSkills,
       customAbilities: hydratedAbilities,
       abilities: game.dnd5e.config.abilities,
     };
@@ -182,13 +190,17 @@ export class Dnd5eExtendersSettings extends FormApplication {
       throw errorMessage;
     }
 
-    const newCustomAbilities = mergeObject(customAbilities, Object.values(data.abilities || {}));
-    const newCustomSkills = Object.values(data.skills || {});
+    const abilitiesArray = Object.values(data.abilities || {});
+    const skillsArray = Object.values(data.skills || {});
+
+    const newCustomAbilities = abilitiesArray.length ? mergeObject(customAbilities, abilitiesArray) : abilitiesArray;
+    const newCustomSkills = skillsArray.length ? mergeObject(customSkills, skillsArray) : skillsArray;
 
     log(true, 'Warnings accepted, setting settings.', {
       abilities: newCustomAbilities,
       skills: newCustomSkills,
     });
+
     game.settings.set(MODULE_ID, MySettings.customAbilities, newCustomAbilities);
     game.settings.set(MODULE_ID, MySettings.customSkills, newCustomSkills);
   }
