@@ -1,5 +1,3 @@
-{{log abilities}}
-
 <tr>
   <td>
     <input type="text" name="skills.{{index}}.title" value="{{item.title}}" data-dtype="String">
@@ -9,12 +7,10 @@
       value="{{item.abbreviation}}" data-dtype="String">
   </td>
   <td>
-    {{log item (lookup item index) (lookup (lookup 'skills' index) 'ability')}}
     <select name="skills.{{index}}.ability" data-type="String" value="{{item.ability}}">
       {{#select item.ability}}
       <option value="">{{localize "DND5E.None"}}</option>
       {{#each abilities as |abl a|}}
-      {{log abl a}}
       <option value="{{a}}">{{abl}}</option>
       {{/each}}
       {{/select}}
