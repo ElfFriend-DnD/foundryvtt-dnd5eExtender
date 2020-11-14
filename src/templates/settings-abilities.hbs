@@ -1,29 +1,17 @@
-{{#*inline 'table-row'}}
-<tr>
-  <td>
-    <input type="text" name="abilities.{{index}}.abbreviation" value="{{item.abbreviation}}" data-dtype="String">
-  </td>
-  <td>
-    <input type="text" name="abilities.{{index}}.title" value="{{item.title}}" data-dtype="String">
-  </td>
-  <td>
-    <button type="button" title="Delete"><i class="fa fa-trash"></i></button>
-  </td>
-</tr>
-{{/inline}}
+{{log abilities}}
 
 <table>
   <thead>
     <tr>
-      <th>Ability Score</th>
+      <th>Label</th>
       <th>Abbreviation</th>
       <th>Delete</th>
     </tr>
   </thead>
 
   <tbody>
-    {{#each items}}
-    {{> 'table-row' index=@index item=this}}
+    {{#each abilities}}
+    {{> 'modules/dnd5e-extender/templates/settings-abilities-tr.hbs' index=@index item=this}}
     {{/each}}
   </tbody>
 </table>

@@ -1,0 +1,16 @@
+<tr>
+  <td>
+    <input type="text" name="abilities.{{index}}.abbreviation" value="{{item.abbreviation}}" data-dtype="String">
+  </td>
+  <td>
+    <input type="text" name="abilities.{{index}}.title" disabled="{{item.isEditable}}" value="{{item.title}}"
+      data-dtype="String">
+  </td>
+  <td class="textCenter">
+    {{#if item.isEditable}}
+    <button type="button" title="Delete"><i class="fa fa-trash"></i></button>
+    {{else}}
+    <i class="fa fa-lock" title="{{localize 'EXT5E.warnings.cannotDelete'}}"></i>
+    {{/if}}
+  </td>
+</tr>

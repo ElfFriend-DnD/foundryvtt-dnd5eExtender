@@ -1,6 +1,11 @@
 {
-  "EXT5E.HitDC": "Hit / DC",
-
-  "EXT5E.limitActionsToCantrips": "Limit Actions to Cantrips",
-  "EXT5E.limitActionsToCantripsHint": "Instead of showing all spells that deal damage in the Actions tab, limit it to only cantrips. This is the default D&DBeyond behavior."
+  "EXT5E": {
+    "AllWarnings": "All Warnings must be Confirmed before submission is allowed.",
+    "warnings": {
+      "brick": "These changes I am making might brick my world.",
+      "update": "I should not update the dnd5e system without first checking that this module is compatible.",
+      "deactivate": "If I ever deactivate this module my world will break.",
+      "cannotDelete": "You cannot delete something which has already been injected."
+    }
+  }
 }

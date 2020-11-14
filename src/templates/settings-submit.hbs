@@ -1,0 +1,32 @@
+<h2>Understand the Risks</h2>
+<p>You are about to redefine the data model of the dnd5e system. This is Extremely Dangerous. There is a high
+  chance of completely wrecking your game.</p>
+
+<p>If you do this without first backing up your world you are asking for trouble and the module developer can not
+  help you <strong>when</strong> things go wrong.</p>
+
+<h3>I understand that...</h3>
+
+<ul>
+  <li>
+    <label>
+      <input type='checkbox' data-dtype='boolean' name='warning.brick' {{checked settings.warningConfirmBrick}} />
+      {{localize 'EXT5E.warnings.brick'}}
+    </label>
+  </li>
+
+  <li>
+    <label>
+      <input type='checkbox' data-dtype='boolean' name='warning.update' {{checked settings.warningConfirmUpdate}} />
+      {{localize 'EXT5E.warnings.update'}}
+    </label>
+  </li>
+
+  <li>
+    <label>
+      <input type='checkbox' data-dtype='boolean' name='warning.deactivate'
+        {{checked settings.warningConfirmDeactivate}} />
+      {{localize 'EXT5E.warnings.deactivate'}}</label>
+  </li>
+</ul>
+<button type='submit'>Submit Changes</button>

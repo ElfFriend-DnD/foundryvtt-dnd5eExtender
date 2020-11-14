@@ -12,7 +12,7 @@ import { defineAbilityScores, extendPrepareDataWithAbilities } from './module/ab
 Hooks.once('init', async function () {
   log(true, `Initializing ${MODULE_ID}`);
 
-  // Set a class name on the body so our overrides will take effect
+  // Set a class name on the body so our css overrides will take effect
   $('body').addClass('dnd5e-extender');
 
   // Preload Handlebars templates

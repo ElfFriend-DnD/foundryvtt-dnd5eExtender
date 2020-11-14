@@ -10,6 +10,16 @@ export const registerSettings = function () {
   Dnd5eExtendersSettings.init();
 };
 
+/**
+ * Goal:
+ * Create a tabbed form where each tab has dynamically added
+ * rows which can only be deleted if they were not already there.
+ * The data is only saved on submit. And the form can only be submitted
+ * if three checkboxes are checked. Checkboxes are not persisted,
+ * error is shown if the user attempts to submit without the checkboxes
+ * checked.
+ */
+
 export class Dnd5eExtendersSettings extends FormApplication {
   static init() {
     game.settings.registerMenu(MODULE_ID, 'menu', {
@@ -21,7 +31,12 @@ export class Dnd5eExtendersSettings extends FormApplication {
     });
 
     game.settings.register(MODULE_ID, MySettings.customAbilities, {
-      default: [],
+      default: [
+        {
+          abbreviation: 'san',
+          title: 'Sanity',
+        },
+      ],
       type: Object,
       config: false,
     });
@@ -36,10 +51,13 @@ export class Dnd5eExtendersSettings extends FormApplication {
   static get defaultOptions() {
     return {
       ...super.defaultOptions,
-      template: TEMPLATES.settings,
+      classes: ['dnd5e-extender-settings'],
+      closeOnSubmit: false,
       height: 'auto',
+      submitOnChange: false,
+      submitOnClose: false,
+      template: TEMPLATES.settings,
       title: 'D&D5e Extender Settings',
-      width: 600,
       tabs: [
         {
           navSelector: '.tabs',
@@ -47,9 +65,7 @@ export class Dnd5eExtendersSettings extends FormApplication {
           initial: 'warning',
         },
       ],
-      submitOnChange: false,
-      closeOnSubmit: false,
-      submitOnClose: false,
+      width: 600,
     };
   }
 
@@ -61,9 +77,16 @@ export class Dnd5eExtendersSettings extends FormApplication {
     const definedAbilities = game.settings.get(MODULE_ID, MySettings.customAbilities);
     const definedSkills = game.settings.get(MODULE_ID, MySettings.customSkills);
 
+    log(false, 'getSettingsData', {
+      definedAbilities,
+      definedSkills,
+    });
+
+    const hydratedAbilities = definedAbilities.map((ability) => mergeObject(ability, { isEditable: false }));
+
     return {
       skills: definedSkills,
-      abilities: definedAbilities,
+      abilities: hydratedAbilities,
     };
   }
 
@@ -76,9 +99,28 @@ export class Dnd5eExtendersSettings extends FormApplication {
   activateListeners(html) {
     super.activateListeners(html);
 
-    $('.add-row').on('click', (e) => {
-      const table = e.target.dataset.table;
+    $('.add-row').on('click', async (e) => {
+      log(false, 'add row clicked', {
+        table: e.currentTarget.dataset.table,
+        e,
+      });
+
+      const table = e.currentTarget.dataset.table;
+
+      const tableElement = e.currentTarget.previousElementSibling;
+      const tbodyElement = $(tableElement).find('tbody');
+
+      const newRowData = {
+        index: tbodyElement.children().length,
+        item: {
+          abbreviation: '',
+          title: '',
+        },
+      };
+
+      const newRow = $(await renderTemplate(TEMPLATES.settingsAbilitiesTr, newRowData));
       // render a new row at the end of tbody
+      tbodyElement.append(newRow);
     });
   }
 
@@ -90,8 +132,20 @@ export class Dnd5eExtendersSettings extends FormApplication {
       data,
     });
 
+    // if any of our warnings are not checked, throw
+    if (Object.values(data.warning).includes(false)) {
+      const errorMessage = game.i18n.localize(`${MODULE_ABBREV}.AllWarnings`);
+
+      ui.notifications.error(errorMessage);
+
+      throw errorMessage;
+    }
+
+    const newAbilities = Object.values(data.abilities);
+
+    log(true, 'Warnings accepted, setting settings.');
     game.settings.set(MODULE_ID, MySettings.customSkills, data.skills);
-    game.settings.set(MODULE_ID, MySettings.customAbilities, data.abilities);
+    game.settings.set(MODULE_ID, MySettings.customAbilities, newAbilities);
   }
 
   // get the table associated to a button (same disposition, same dType)
