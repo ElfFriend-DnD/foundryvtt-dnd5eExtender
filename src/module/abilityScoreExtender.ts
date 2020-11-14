@@ -5,15 +5,16 @@ import { log } from './helpers';
  * Iterates over the user-defined ability scores and defines them in the expected game.dnd5e.config objects
  */
 export function defineAbilityScores() {
-  log(true, 'Defining Custom Ability Scores');
+  const customAbilities = game.settings.get(MODULE_ID, MySettings.customAbilities);
+  log(true, 'Defining Custom Ability Scores', {
+    customAbilities,
+  });
 
-  // define sanity as ability
-  game.dnd5e.config.abilities['san'] = 'Sanity';
-  game.dnd5e.config.abilityAbbreviations['san'] = 'san';
-
-  // define honor as ability
-  game.dnd5e.config.abilities['hon'] = 'Honor';
-  game.dnd5e.config.abilityAbbreviations['hon'] = 'hon';
+  // define custom abilities
+  customAbilities.forEach(({ title, abbreviation }) => {
+    game.dnd5e.config.abilities[abbreviation] = title;
+    game.dnd5e.config.abilityAbbreviations[abbreviation] = abbreviation;
+  });
 }
 
 /**
@@ -21,12 +22,17 @@ export function defineAbilityScores() {
  */
 export function extendPrepareDataWithAbilities() {
   log(true, 'Appending Custom Abilities to dnd5e Data Model');
-  log(false, 'extending prepareData with abilities information', {
-    _data: this._data,
+
+  const customAbilities = game.settings.get(MODULE_ID, MySettings.customAbilities);
+
+  log(true, 'Appending Custom Abilities to dnd5e Data Model', {
+    customAbilities,
   });
 
-  // add sanity to the 5eActor data model
   const abilities = this._data.data.abilities;
-  abilities['san'] = { value: 10, proficient: 0, ...abilities['san'] };
-  abilities['hon'] = { value: 10, proficient: 0, ...abilities['hon'] };
+
+  // add custom abilities to the 5eActor data model
+  customAbilities.forEach(({ abbreviation }) => {
+    abilities[abbreviation] = { value: 10, proficient: 0, ...abilities[abbreviation] };
+  });
 }

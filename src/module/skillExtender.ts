@@ -24,6 +24,9 @@ export function extendPrepareDataWithSkills() {
   });
 
   const skills = this._data.data.skills;
-  skills['tec'] = { value: 0, ability: 'int', ...skills['tec'] };
-  skills['rep'] = { value: 0, ability: 'int', ...skills['rep'] };
+
+  if (!!skills) {
+    skills['tec'] = { value: 0, ability: 'int', ...skills['tec'] };
+    skills['rep'] = { value: 0, ability: 'int', ...skills['rep'] };
+  }
 }

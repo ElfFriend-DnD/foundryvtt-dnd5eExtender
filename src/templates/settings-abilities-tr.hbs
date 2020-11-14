@@ -1,10 +1,10 @@
 <tr>
   <td>
-    <input type="text" name="abilities.{{index}}.abbreviation" value="{{item.abbreviation}}" data-dtype="String">
+    <input type="text" name="abilities.{{index}}.title" value="{{item.title}}" data-dtype="String">
   </td>
   <td>
-    <input type="text" name="abilities.{{index}}.title" disabled="{{item.isEditable}}" value="{{item.title}}"
-      data-dtype="String">
+    <input type="text" name="abilities.{{index}}.abbreviation" disabled="{{item.isEditable}}"
+      value="{{item.abbreviation}}" data-dtype="String">
   </td>
   <td class="textCenter">
     {{#if item.isEditable}}

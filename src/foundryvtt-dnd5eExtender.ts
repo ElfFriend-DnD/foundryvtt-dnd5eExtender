@@ -19,7 +19,7 @@ Hooks.once('init', async function () {
   await loadTemplates(Object.values(TEMPLATES));
 
   // Register custom module settings
-  registerSettings();
+  await registerSettings();
 
   // define custom abilities
   defineAbilityScores();
@@ -31,6 +31,7 @@ Hooks.once('init', async function () {
     MODULE_ID,
     'game.dnd5e.entities.Actor5e.prototype.prepareData',
     function (prepareData) {
+      log(true, 'extendind data');
       extendPrepareDataWithAbilities.bind(this)();
 
       extendPrepareDataWithSkills.bind(this)();
