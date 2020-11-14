@@ -1,0 +1,44 @@
+<form class="{{classes}}" autocomplete="off">
+  <nav class="sheet-tabs tabs">
+    <a class='item' data-tab='warning'>Warning</a>
+    <a class='item' data-tab='abilities'>Ability Scores</a>
+  </nav>
+
+  <section class='tab' data-tab='warning'>
+    <h2>Understand the Risks</h2>
+    <p>You are about to redefine the data model of the dnd5e system. This is Extremely Dangerous. There is a high
+      chance of completely wrecking your game.</p>
+
+    <p>If you do this without first backing up your world you are asking for trouble and the module developer can not
+      help you <strong>when</strong> things go wrong.</p>
+
+    <h3>I understand that...</h3>
+
+    <ul>
+      <li>
+        <input type='checkbox' data-dtype='boolean' name='warning-confirm-brick' id='EXT5E-warning-confirm-brick'
+          {{checked settings.warningConfirmBrick}} />
+        <label for='EXT5E-warning-confirm-brick'>These changes I am making might brick my world.</label>
+      </li>
+
+      <li>
+        <input type='checkbox' data-dtype='boolean' name='warning-confirm-update' id='EXT5E-warning-confirm-update'
+          {{checked settings.warningConfirmUpdate}} />
+        <label for='EXT5E-warning-confirm'>I should not update the dnd5e system without first checking that this module
+          is
+          compatible.</label>
+      </li>
+
+      <li>
+        <input type='checkbox' data-dtype='boolean' name='warning-confirm-deactivate'
+          id='EXT5E-warning-confirm-deactivate' {{checked settings.warningConfirmDeactivate}} />
+        <label for='EXT5E-warning-deactivate'>If I ever deactivate this module my world will break.</label>
+      </li>
+    </ul>
+    <button type='submit'>Submit Changes</button>
+  </section>
+
+  <section class='tab' data-tab='abilities'>
+    {{> 'modules/dnd5e-extender/templates/settings-abilities.hbs' abilities=settings.abilities}}
+  </section>
+</form>

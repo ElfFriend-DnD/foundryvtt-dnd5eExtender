@@ -1,7 +1,6 @@
 // Import TypeScript modules
 import { registerSettings } from './module/settings';
-import { preloadTemplates } from './module/preloadTemplates';
-import { MODULE_ABBREV, MODULE_ID, MySettings } from './module/constants';
+import { MODULE_ABBREV, MODULE_ID, MySettings, TEMPLATES } from './module/constants';
 import { log } from './module/helpers';
 import { libWrapper } from './module/libWrapperShim';
 import { defineSkills, extendPrepareDataWithSkills } from './module/skillExtender';
@@ -13,13 +12,14 @@ import { defineAbilityScores, extendPrepareDataWithAbilities } from './module/ab
 Hooks.once('init', async function () {
   log(true, `Initializing ${MODULE_ID}`);
 
+  // Set a class name on the body so our overrides will take effect
   $('body').addClass('dnd5e-extender');
+
+  // Preload Handlebars templates
+  await loadTemplates(Object.values(TEMPLATES));
 
   // Register custom module settings
   registerSettings();
-
-  // Preload Handlebars templates
-  await preloadTemplates();
 
   // define custom abilities
   defineAbilityScores();
