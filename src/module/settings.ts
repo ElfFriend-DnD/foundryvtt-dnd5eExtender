@@ -74,18 +74,18 @@ export class Dnd5eExtendersSettings extends FormApplication {
   }
 
   getSettingsData() {
-    const definedAbilities = game.settings.get(MODULE_ID, MySettings.customAbilities);
-    const definedSkills = game.settings.get(MODULE_ID, MySettings.customSkills);
+    const customAbilities = game.settings.get(MODULE_ID, MySettings.customAbilities);
+    const customSkills = game.settings.get(MODULE_ID, MySettings.customSkills);
 
     log(false, 'getSettingsData', {
-      definedAbilities,
-      definedSkills,
+      customAbilities,
+      customSkills,
     });
 
-    const hydratedAbilities = definedAbilities.map((ability) => mergeObject(ability, { isEditable: false }));
+    const hydratedAbilities = customAbilities.map((ability) => mergeObject(ability, { isEditable: false }));
 
     return {
-      skills: definedSkills,
+      skills: customSkills,
       abilities: hydratedAbilities,
     };
   }
@@ -114,6 +114,7 @@ export class Dnd5eExtendersSettings extends FormApplication {
         index: tbodyElement.children().length,
         item: {
           abbreviation: '',
+          isEditable: true,
           title: '',
         },
       };
@@ -122,15 +123,28 @@ export class Dnd5eExtendersSettings extends FormApplication {
       // render a new row at the end of tbody
       tbodyElement.append(newRow);
     });
+
+    $('.delete-row').on('click', (e) => {
+      log(false, 'delete row clicked', {
+        table: e.currentTarget.dataset.table,
+        e,
+      });
+
+      const target = e.currentTarget;
+      $(target).parentsUntil('tbody').remove();
+    });
   }
 
   async _updateObject(ev, formData) {
+    const customAbilities = game.settings.get(MODULE_ID, MySettings.customAbilities);
     const data = expandObject(formData);
 
     log(false, {
       formData,
       data,
     });
+
+    const newCustomAbilities = mergeObject(customAbilities, Object.values(data.abilities));
 
     // if any of our warnings are not checked, throw
     if (Object.values(data.warning).includes(false)) {
@@ -143,9 +157,12 @@ export class Dnd5eExtendersSettings extends FormApplication {
 
     const newAbilities = Object.values(data.abilities);
 
-    log(true, 'Warnings accepted, setting settings.');
+    log(true, 'Warnings accepted, setting settings.', {
+      abilities: newCustomAbilities,
+      skills: data.skills,
+    });
     game.settings.set(MODULE_ID, MySettings.customSkills, data.skills);
-    game.settings.set(MODULE_ID, MySettings.customAbilities, newAbilities);
+    game.settings.set(MODULE_ID, MySettings.customAbilities, newCustomAbilities);
   }
 
   // get the table associated to a button (same disposition, same dType)

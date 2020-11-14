@@ -3,14 +3,17 @@
     <input type="text" name="abilities.{{index}}.title" value="{{item.title}}" data-dtype="String">
   </td>
   <td>
-    <input type="text" name="abilities.{{index}}.abbreviation" disabled="{{item.isEditable}}"
+    <input type="text" name="abilities.{{index}}.abbreviation" {{#unless item.isEditable}}disabled{{/unless}}
       value="{{item.abbreviation}}" data-dtype="String">
   </td>
   <td class="textCenter">
-    {{#if item.isEditable}}
-    <button type="button" title="Delete"><i class="fa fa-trash"></i></button>
-    {{else}}
-    <i class="fa fa-lock" title="{{localize 'EXT5E.warnings.cannotDelete'}}"></i>
-    {{/if}}
+    <button type="button" title="Delete" class='delete-row' data-row-index="{{index}}">
+      {{#if item.isEditable}}
+      <i class="fa fa-trash"></i>
+      {{else}}
+      <i class="fa fa-lock" title="{{localize 'EXT5E.warnings.cannotDelete'}}"></i>
+      {{/if}}
+    </button>
+    {{!-- <button type="button" title="Delete"></button> --}}
   </td>
 </tr>
