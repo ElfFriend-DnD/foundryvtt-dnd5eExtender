@@ -10,7 +10,7 @@ This module allows a GM to define custom Ability Scores and Skills for the dnd5e
 
 ## ⚠️⚠️⚠️ Warnings ⚠️⚠️⚠️
 
-This can seriously fuck up your game. If you're planning on running a game with alternative ability scores or skills, do not add and remove them repeatedly. This is intended to be a one-time set and forget modification. After you've added an ability score or skill, removing it will break all actors in the game and you will have to remake them all.
+This can seriously wreck your game. If you're planning on running a game with alternative ability scores or skills, do not add and remove them repeatedly. This is intended to be a one-time set and forget modification. After you've added an ability score or skill, removing it will break all actors in the game and you will have to remake them all.
 
 No, there's no migration scripts, no there's no recovery scripts. I don't even know if those are possible. You have been warned. I can not help you if you break your game with this module. Use it at your own EXTREME RISK.
 
@@ -21,9 +21,6 @@ Module JSON:
 ```
 https://github.com/ElfFriend-DnD/foundryvtt-dnd5eExtender/releases/latest/download/module.json
 ```
-
-## Gallery
-
 
 ## Configuration
 
