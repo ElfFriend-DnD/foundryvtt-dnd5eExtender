@@ -31,22 +31,17 @@ export class Dnd5eExtendersSettings extends FormApplication {
 
     game.settings.register(MODULE_ID, MySettings.debugMode, {
       default: CONFIG[MODULE_ID]?.debug,
-      name: `${MODULE_ABBREV}.debugMode`,
+      name: `${MODULE_ABBREV}.settings.debug.Label`,
       type: Boolean,
       config: true,
-      hint: `${MODULE_ABBREV}.debugModeHint`,
+      hint: `${MODULE_ABBREV}.settings.debug.Hint`,
       onChange: (value) => {
         CONFIG[MODULE_ID] = { debug: value };
       },
     });
 
     game.settings.register(MODULE_ID, MySettings.customAbilities, {
-      default: [
-        {
-          abbreviation: 'san',
-          title: 'Sanity',
-        },
-      ],
+      default: [],
       type: Object,
       config: false,
     });

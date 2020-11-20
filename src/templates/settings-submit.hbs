@@ -1,32 +1,34 @@
-<h2>Understand the Risks</h2>
-<p>You are about to redefine the data model of the dnd5e system. This is Extremely Dangerous. There is a high
-  chance of completely wrecking your game.</p>
+<div>
+  <h2>{{localize 'EXT5E.warnings.UnderstandRisks'}}</h2>
 
-<p>If you do this without first backing up your world you are asking for trouble and the module developer can not
-  help you <strong>when</strong> things go wrong.</p>
+  <p>{{localize 'EXT5E.warnings.RiskHint'}}</p>
 
-<h3>I understand that...</h3>
+  <p>{{localize 'EXT5E.warnings.BackupFirst'}}</p>
 
-<ul>
-  <li>
-    <label>
-      <input type='checkbox' data-dtype='boolean' name='warning.brick' {{checked settings.warningConfirmBrick}} />
-      {{localize 'EXT5E.warnings.brick'}}
-    </label>
-  </li>
+  <h3>{{localize 'EXT5E.warnings.IUnderstand'}}</h3>
 
-  <li>
-    <label>
-      <input type='checkbox' data-dtype='boolean' name='warning.update' {{checked settings.warningConfirmUpdate}} />
-      {{localize 'EXT5E.warnings.update'}}
-    </label>
-  </li>
+  <ul class="warning-list">
+    <li>
+      <label>
+        <input type='checkbox' data-dtype='boolean' name='warning.brick' {{checked settings.warningConfirmBrick}} />
+        {{localize 'EXT5E.warnings.Brick'}}
+      </label>
+    </li>
 
-  <li>
-    <label>
-      <input type='checkbox' data-dtype='boolean' name='warning.deactivate'
-        {{checked settings.warningConfirmDeactivate}} />
-      {{localize 'EXT5E.warnings.deactivate'}}</label>
-  </li>
-</ul>
-<button type='submit'>Submit Changes</button>
+    <li>
+      <label>
+        <input type='checkbox' data-dtype='boolean' name='warning.update' {{checked settings.warningConfirmUpdate}} />
+        {{localize 'EXT5E.warnings.Update'}}
+      </label>
+    </li>
+
+    <li>
+      <label>
+        <input type='checkbox' data-dtype='boolean' name='warning.deactivate'
+          {{checked settings.warningConfirmDeactivate}} />
+        {{localize 'EXT5E.warnings.Deactivate'}}</label>
+    </li>
+  </ul>
+</div>
+
+<button type='submit'>{{localize 'Save Changes'}}</button>

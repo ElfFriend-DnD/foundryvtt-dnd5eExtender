@@ -2,12 +2,29 @@
   "EXT5E": {
     "AllWarnings": "All Warnings must be Confirmed before submission is allowed.",
     "warnings": {
-      "brick": "These changes I am making might brick my world.",
-      "update": "I should not update the dnd5e system without first checking that this module is compatible.",
-      "deactivate": "If I ever deactivate this module my world will break.",
-      "cannotDelete": "You cannot delete something which has already been injected."
+      "UnderstandRisks": "Understand the Risks",
+      "RiskHint": "You are about to redefine the data model of the dnd5e system. This is Extremely Dangerous. There is a high chance of completely wrecking your game.",
+      "BackupFirst": "If you do this without first backing up your world you are asking for trouble and the module developer can not help you *when* things go wrong.",
+      "IUnderstand": "I understand that...",
+      "Brick": "These changes I am making might brick my world.",
+      "Update": "I should not update the dnd5e system without first checking that this module is compatible.",
+      "Deactivate": "If I ever deactivate this module my world will break.",
+      "CannotDelete": "You cannot delete something which has already been injected."
     },
-    "debugMode": "Debug Mode",
-    "debugModeHint": "There are even less safegaurds against destroying your world in debug mode. Do not use this unless you have no actors in your world and do not mind having to recreate it in its entirety."
+    "settings": {
+      "AbilitiesSkills": "Custom Abilities & Skills",
+      "Abilities": "Ability Scores",
+      "Skills": "Skills",
+      "debug": {
+        "Label": "Debug Mode",
+        "Hint": "There are even less safegaurds against destroying your world in debug mode. Do not use this unless you have no actors in your world and do not mind having to recreate it in its entirety."
+      },
+      "table": {
+        "Add": "Add Row",
+        "Abbrev": "Abbreviation",
+        "Ability": "Ability",
+        "Label": "Label"
+      }
+    }
   }
 }
