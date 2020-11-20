@@ -7,13 +7,15 @@
       value="{{item.abbreviation}}" data-dtype="String">
   </td>
   <td class="textCenter">
-    <button type="button" title="Delete" class='delete-row' data-row-index="{{index}}">
+    <button type="button"
+      title="{{#if item.isEditable}}{{localize 'Delete'}}{{else}}{{localize 'EXT5E.warnings.cannotDelete'}}{{/if}}"
+      class='delete-row' data-row-index="{{index}}" {{#unless item.isEditable}}disabled{{/unless}}>
+      {{#unless item.isEditable}}disabled{{/unless}}>
       {{#if item.isEditable}}
       <i class="fa fa-trash"></i>
       {{else}}
       <i class="fa fa-lock" title="{{localize 'EXT5E.warnings.cannotDelete'}}"></i>
       {{/if}}
     </button>
-    {{!-- <button type="button" title="Delete"></button> --}}
   </td>
 </tr>

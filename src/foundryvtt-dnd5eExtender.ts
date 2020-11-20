@@ -15,9 +15,6 @@ Hooks.once('init', async function () {
   // Set a class name on the body so our css overrides will take effect
   $('body').addClass('dnd5e-extender');
 
-  // Preload Handlebars templates
-  await loadTemplates(Object.values(flattenObject(TEMPLATES)));
-
   // Register custom module settings
   await registerSettings();
 
@@ -40,6 +37,9 @@ Hooks.once('init', async function () {
     },
     'WRAPPER'
   );
+
+  // Preload Handlebars templates
+  await loadTemplates(Object.values(flattenObject(TEMPLATES)));
 
   Hooks.call(`DND5eExtendedReady`);
 });
