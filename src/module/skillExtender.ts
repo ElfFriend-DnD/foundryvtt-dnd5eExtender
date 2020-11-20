@@ -6,6 +6,11 @@ import { log } from './helpers';
  */
 export function defineSkills() {
   const customSkills = game.settings.get(MODULE_ID, MySettings.customSkills);
+
+  if (!customSkills) {
+    return;
+  }
+
   log(true, 'Defining Custom Skills', {
     customSkills,
   });
@@ -20,11 +25,11 @@ export function defineSkills() {
  * Iterates over the user-defined skills and adds them to the dnd5e actor data model
  */
 export function extendPrepareDataWithSkills() {
-  log(false, 'extending prepareData with skill information', {
-    _data: this._data,
-  });
-
   const customSkills = game.settings.get(MODULE_ID, MySettings.customSkills);
+
+  if (!customSkills) {
+    return;
+  }
 
   log(true, 'Appending Custom Skills to dnd5e Data Model', {
     customSkills,

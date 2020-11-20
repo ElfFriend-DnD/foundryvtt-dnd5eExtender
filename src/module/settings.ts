@@ -3,8 +3,18 @@ import { log } from './helpers';
 
 export const registerSettings = function () {
   // debug use
-  CONFIG[MODULE_ID] = { debug: true };
-  CONFIG.debug.hooks = true;
+  // CONFIG[MODULE_ID] = { debug: true };
+
+  game.settings.register(MODULE_ID, MySettings.debugMode, {
+    default: false,
+    name: `${MODULE_ABBREV}.settings.debug.Label`,
+    type: Boolean,
+    config: true,
+    hint: `${MODULE_ABBREV}.settings.debug.Hint`,
+    onChange: (value) => {
+      CONFIG[MODULE_ID] = { debug: value };
+    },
+  });
 
   Dnd5eExtendersSettings.init();
 };
@@ -27,17 +37,6 @@ export class Dnd5eExtendersSettings extends FormApplication {
       icon: 'fas fa-hammer',
       type: Dnd5eExtendersSettings,
       restricted: true,
-    });
-
-    game.settings.register(MODULE_ID, MySettings.debugMode, {
-      default: CONFIG[MODULE_ID]?.debug,
-      name: `${MODULE_ABBREV}.settings.debug.Label`,
-      type: Boolean,
-      config: true,
-      hint: `${MODULE_ABBREV}.settings.debug.Hint`,
-      onChange: (value) => {
-        CONFIG[MODULE_ID] = { debug: value };
-      },
     });
 
     game.settings.register(MODULE_ID, MySettings.customAbilities, {

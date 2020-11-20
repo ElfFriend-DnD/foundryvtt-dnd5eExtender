@@ -6,6 +6,11 @@ import { log } from './helpers';
  */
 export function defineAbilityScores() {
   const customAbilities = game.settings.get(MODULE_ID, MySettings.customAbilities);
+
+  if (!customAbilities) {
+    return;
+  }
+
   log(true, 'Defining Custom Ability Scores', {
     customAbilities,
   });
@@ -22,6 +27,10 @@ export function defineAbilityScores() {
  */
 export function extendPrepareDataWithAbilities() {
   const customAbilities = game.settings.get(MODULE_ID, MySettings.customAbilities);
+
+  if (!customAbilities) {
+    return;
+  }
 
   log(true, 'Appending Custom Abilities to dnd5e Data Model', {
     customAbilities,
