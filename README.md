@@ -49,7 +49,6 @@ I'm honestly not sure how well this will play with modules that make assumptions
 | ------------------------------------------------------------------------------------ | :-----: | ----- |
 | [Better Rolls 5e](https://github.com/RedReign/FoundryVTT-BetterRolls5e)              | :shrug: |       |
 | [Midi-QOL](https://gitlab.com/tposney/midi-qol)                                      | :shrug: |       |
-| [Minor QOL](https://gitlab.com/tposney/minor-qol)                                    | :shrug: |       |
 | [FoundryVTT Magic Items](https://gitlab.com/riccisi/foundryvtt-magic-items)          | :shrug: |       |
 | [Dynamic Active Effects](https://gitlab.com/tposney/dae)                             | :shrug: |       |
 | [Skill Customization 5e](https://github.com/schultzcole/FVTT-Skill-Customization-5e) | :shrug: |       |
