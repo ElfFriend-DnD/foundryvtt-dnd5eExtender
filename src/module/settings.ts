@@ -78,6 +78,7 @@ export class Dnd5eExtendersSettings extends FormApplication {
   }
 
   getSettingsData() {
+    const debugModeSetting = game.settings.get(MODULE_ID, MySettings.debugMode);
     const customAbilities = game.settings.get(MODULE_ID, MySettings.customAbilities);
     const customSkills = game.settings.get(MODULE_ID, MySettings.customSkills);
 
@@ -87,11 +88,15 @@ export class Dnd5eExtendersSettings extends FormApplication {
     });
 
     const hydratedAbilities = customAbilities.map((ability) =>
-      mergeObject(ability, { isEditable: CONFIG[MODULE_ID].debug })
+      mergeObject(ability, { isEditable: CONFIG[MODULE_ID]?.debug || debugModeSetting })
+    );
+
+    const hydratedSkills = customSkills.map((skill) =>
+      mergeObject(skill, { isEditable: CONFIG[MODULE_ID]?.debug || debugModeSetting })
     );
 
     return {
-      customSkills: customSkills,
+      customSkills: hydratedSkills,
       customAbilities: hydratedAbilities,
       abilities: game.dnd5e.config.abilities,
     };
@@ -195,7 +200,9 @@ export class Dnd5eExtendersSettings extends FormApplication {
       skills: newCustomSkills,
     });
 
-    game.settings.set(MODULE_ID, MySettings.customAbilities, newCustomAbilities);
-    game.settings.set(MODULE_ID, MySettings.customSkills, newCustomSkills);
+    await game.settings.set(MODULE_ID, MySettings.customAbilities, newCustomAbilities);
+    await game.settings.set(MODULE_ID, MySettings.customSkills, newCustomSkills);
+
+    location.reload();
   }
 }
