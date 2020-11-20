@@ -56,7 +56,7 @@ I'm honestly not sure how well this will play with modules that make assumptions
 
 ## Known Issues
 
-- Plenty
+- I'm sure there are plenty, I have not tested this with ANY modules.
 
 ## Acknowledgements
 
