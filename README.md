@@ -1,24 +1,25 @@
-# Character Actions 5e
+# D&D5e Extender
 
-![Latest Release Download Count](https://img.shields.io/badge/dynamic/json?label=Downloads@latest&query=assets%5B1%5D.download_count&url=https%3A%2F%2Fapi.github.com%2Frepos%2FElfFriend-DnD%2Ffoundryvtt-dnd5eCharacterActions%2Freleases%2Flatest)
-![Forge Installs](https://img.shields.io/badge/dynamic/json?label=Forge%20Installs&query=package.installs&suffix=%25&url=https%3A%2F%2Fforge-vtt.com%2Fapi%2Fbazaar%2Fpackage%2Fcharacter-actions-list-5e&colorB=4aa94a)
-![Foundry Core Compatible Version](https://img.shields.io/badge/dynamic/json.svg?url=https%3A%2F%2Fraw.githubusercontent.com%2FElfFriend-DnD%2Ffoundryvtt-dnd5eCharacterActions%2Fmain%2Fsrc%2Fmodule.json&label=Foundry%20Version&query=$.compatibleCoreVersion&colorB=orange)
+![Latest Release Download Count](https://img.shields.io/badge/dynamic/json?label=Downloads@latest&query=assets%5B1%5D.download_count&url=https%3A%2F%2Fapi.github.com%2Frepos%2FElfFriend-DnD%2Ffoundryvtt-dnd5eExtender%2Freleases%2Flatest)
+![Forge Installs](https://img.shields.io/badge/dynamic/json?label=Forge%20Installs&query=package.installs&suffix=%25&url=https%3A%2F%2Fforge-vtt.com%2Fapi%2Fbazaar%2Fpackage%2Fdnd5e-extender&colorB=4aa94a)
+![Foundry Core Compatible Version](https://img.shields.io/badge/dynamic/json.svg?url=https%3A%2F%2Fraw.githubusercontent.com%2FElfFriend-DnD%2Ffoundryvtt-dnd5eExtender%2Fmain%2Fsrc%2Fmodule.json&label=Foundry%20Version&query=$.compatibleCoreVersion&colorB=orange)
 [![ko-fi](https://img.shields.io/badge/-buy%20me%20a%20coke-%23FF5E5B)](https://ko-fi.com/elffriend)
 
 
-Theoretically, this module provides a placable reusable "component" which details all of the actions a given Character Actor can take.
+This module allows a GM to define custom Ability Scores and Skills for the dnd5e system. The goal is to allow other alternative rulesets to be configured in this module as well.
 
-## Warnings
+## ⚠️⚠️⚠️ Warnings ⚠️⚠️⚠️
 
-This can seriously fuck up your game. If you're planning on running a game with alternative ability scores or skills, do not add and remove them repeatedly. This is intended to be a one-time set and forget modification. After you've set an ability score, removing it carries some risks.
+This can seriously fuck up your game. If you're planning on running a game with alternative ability scores or skills, do not add and remove them repeatedly. This is intended to be a one-time set and forget modification. After you've added an ability score or skill, removing it will break all actors in the game and you will have to remake them all.
 
+No, there's no migration scripts, no there's no recovery scripts. I don't even know if those are possible. You have been warned. I can not help you if you break your game with this module. Use it at your own EXTREME RISK.
 
 ## Installation
 
 Module JSON:
 
 ```
-https://github.com/ElfFriend-DnD/foundryvtt-dnd5eCharacterActions/releases/latest/download/module.json
+https://github.com/ElfFriend-DnD/foundryvtt-dnd5eExtender/releases/latest/download/module.json
 ```
 
 ## Gallery
@@ -26,9 +27,9 @@ https://github.com/ElfFriend-DnD/foundryvtt-dnd5eCharacterActions/releases/lates
 
 ## Configuration
 
-| **Name**                      | Description                                                                                                                                      |
-| ----------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------ |
-| **Limit Actions to Cantrips** | Path to the file that will be used for the Unexplored Fog. This image should be the same size as your background image or stretching will occur. |
+| **Name**       | Description                                                     |
+| -------------- | --------------------------------------------------------------- |
+| **Debug Mode** | Remove all of the obstacles between you and ruining your world. |
 
 
 ## Compatibility
@@ -47,14 +48,14 @@ https://github.com/ElfFriend-DnD/foundryvtt-dnd5eCharacterActions/releases/lates
 
 I'm honestly not sure how well this will play with modules that make assumptions about the 5e system, I'll try to test as many as possible but if something is obviously breaking please create and issue here and I'll see what I can do.
 
-| **Name**                                                                    |  Works  | Notes |
-| --------------------------------------------------------------------------- | :-----: | ----- |
-| [Better Rolls 5e](https://github.com/RedReign/FoundryVTT-BetterRolls5e)     | :shrug: |       |
-| [Midi-QOL](https://gitlab.com/tposney/midi-qol)                             | :shrug: |       |
-| [Minor QOL](https://gitlab.com/tposney/minor-qol)                           | :shrug: |       |
-| [FoundryVTT Magic Items](https://gitlab.com/riccisi/foundryvtt-magic-items) | :shrug: |       |
-| [D&D5e Dark Mode](https://github.com/Stryxin/dnd5edark-foundryvtt)          | :shrug: |       |
-| [Inventory+](https://github.com/syl3r86/inventory-plus)                     | :shrug: |       |
+| **Name**                                                                             |  Works  | Notes |
+| ------------------------------------------------------------------------------------ | :-----: | ----- |
+| [Better Rolls 5e](https://github.com/RedReign/FoundryVTT-BetterRolls5e)              | :shrug: |       |
+| [Midi-QOL](https://gitlab.com/tposney/midi-qol)                                      | :shrug: |       |
+| [Minor QOL](https://gitlab.com/tposney/minor-qol)                                    | :shrug: |       |
+| [FoundryVTT Magic Items](https://gitlab.com/riccisi/foundryvtt-magic-items)          | :shrug: |       |
+| [Dynamic Active Effects](https://gitlab.com/tposney/dae)                             | :shrug: |       |
+| [Skill Customization 5e](https://github.com/schultzcole/FVTT-Skill-Customization-5e) | :shrug: |       |
 
 ## Known Issues
 

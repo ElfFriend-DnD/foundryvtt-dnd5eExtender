@@ -1,39 +1,44 @@
 {
-  "name": "dnd5e-extender",
-  "title": "D&D5e Extender",
-  "description": "Provides the ability to add custom Skills, Ability Scores, and other optional rulesets to the dnd5e system.",
-  "systems": ["dnd5e"],
-  "version": "0.1.0",
-  "author": "Andrew Krigline (akrigline)",
-  "authors": [
-    {
-      "name": "Andrew Krigline",
-      "discord": "Calego#0914",
-      "url": "https://github.com/ElfFriend-DnD"
-    }
-  ],
-  "esmodules": ["foundryvtt-dnd5eExtender.js"],
-  "styles": ["foundryvtt-dnd5eExtender.css"],
-  "packs": [],
-  "languages": [
-    {
-      "lang": "en",
-      "name": "English",
-      "path": "lang/en.json"
-    }
-  ],
-  "dependencies": [
-    {
-      "name": "lib-wrapper",
-      "version": "1.0.5"
-    }
-  ],
-  "minimumCoreVersion": "0.7.5",
-  "compatibleCoreVersion": "0.7.5",
-  "bugs": "https://github.com/ElfFriend-DnD/foundryvtt-dnd5eExtender/issues",
-  "changelog": "https://github.com/ElfFriend-DnD/foundryvtt-dnd5eExtender/releases",
-  "download": "https://github.com/ElfFriend-DnD/foundryvtt-dnd5eExtender/releases/download/v0.1.0/module.zip",
-  "manifest": "https://github.com/ElfFriend-DnD/foundryvtt-dnd5eExtender/releases/latest/download/module.json",
-  "readme": "https://raw.githubusercontent.com/ElfFriend-DnD/foundryvtt-dnd5eExtender/main/README.md",
-  "url": "https://github.com/ElfFriend-DnD/foundryvtt-dnd5eExtender"
+	"name": "dnd5e-extender",
+	"title": "D&D5e Extender",
+	"description": "Provides the ability to add custom Skills, Ability Scores.",
+	"systems": ["dnd5e"],
+	"version": "0.2.0",
+	"author": "Andrew Krigline (akrigline)",
+	"authors": [
+		{
+			"name": "Andrew Krigline",
+			"discord": "Calego#0914",
+			"url": "https://github.com/ElfFriend-DnD"
+		}
+	],
+	"esmodules": [
+		"foundryvtt-dnd5eExtender.js"
+	],
+	"styles": [
+		"foundryvtt-dnd5eExtender.css"
+	],
+	"languages": [
+		{
+			"lang": "en",
+			"name": "English",
+			"path": "lang/en.json"
+		}
+	],
+	"dependencies": [
+		{
+			"name": "lib-wrapper",
+			"version": "1.0.5"
+		}
+	],
+	"compatibleCoreVersion": "0.7.7",
+	"minimumCoreVersion": "0.7.7",
+	"minimumSystemVersion": "1.1.1",
+	"maximumSystemVersion": "1.1.1",
+	"bugs": "https://github.com/ElfFriend-DnD/foundryvtt-dnd5eExtender/issues",
+	"changelog": "https://github.com/ElfFriend-DnD/foundryvtt-dnd5eExtender/releases",
+	"download": "https://github.com/ElfFriend-DnD/foundryvtt-dnd5eExtender/releases/download/v0.2.0/module.zip",
+	"manifest": "https://github.com/ElfFriend-DnD/foundryvtt-dnd5eExtender/releases/latest/download/module.json",
+	"readme": "https://raw.githubusercontent.com/ElfFriend-DnD/foundryvtt-dnd5eExtender/main/README.md",
+	"url": "https://github.com/ElfFriend-DnD/foundryvtt-dnd5eExtender"
 }
