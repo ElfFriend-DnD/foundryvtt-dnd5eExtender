@@ -3,7 +3,7 @@
 	"title": "D&D5e Extender",
 	"description": "Provides the ability to add custom Skills, Ability Scores.",
 	"systems": ["dnd5e"],
-	"version": "0.2.0",
+	"version": "1.0.0",
 	"author": "Andrew Krigline (akrigline)",
 	"authors": [
 		{
@@ -37,7 +37,7 @@
 	"maximumSystemVersion": "1.1.1",
 	"bugs": "https://github.com/ElfFriend-DnD/foundryvtt-dnd5eExtender/issues",
 	"changelog": "https://github.com/ElfFriend-DnD/foundryvtt-dnd5eExtender/releases",
-	"download": "https://github.com/ElfFriend-DnD/foundryvtt-dnd5eExtender/releases/download/v0.2.0/module.zip",
+	"download": "https://github.com/ElfFriend-DnD/foundryvtt-dnd5eExtender/releases/download/v1.0.0/module.zip",
 	"manifest": "https://github.com/ElfFriend-DnD/foundryvtt-dnd5eExtender/releases/latest/download/module.json",
 	"readme": "https://raw.githubusercontent.com/ElfFriend-DnD/foundryvtt-dnd5eExtender/main/README.md",
 	"url": "https://github.com/ElfFriend-DnD/foundryvtt-dnd5eExtender"

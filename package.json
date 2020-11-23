@@ -1,7 +1,7 @@
 {
 	"private": true,
 	"name": "foundryvtt-dnd5eExtended",
-	"version": "0.2.0",
+	"version": "1.0.0",
 	"description": "A module which allows GMs to add and enable optional rules for the dnd5e system.",
 	"scripts": {
 		"publish": "gulp publish",
