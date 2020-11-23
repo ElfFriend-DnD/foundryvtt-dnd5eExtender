@@ -42,12 +42,12 @@ https://github.com/ElfFriend-DnD/foundryvtt-dnd5eExtender/releases/latest/downlo
 | [Sky's Alternate D&D 5e Character Sheet](https://github.com/Sky-Captain-13/foundry/tree/master/alt5e)          | :heavy_check_mark: | :heavy_check_mark: |                                                            |
 
 ### NPC Sheet Support
-| **Name**                                                                  |       Skills       |   Ability Scores   | Notes                                        |
-| ------------------------------------------------------------------------- | :----------------: | :----------------: | -------------------------------------------- |
-| Default dnd5e system NPC sheet                                            | :heavy_check_mark: | :heavy_check_mark: | Module customizations were needed.           |
-| [Tidy 5e Sheet v0.3.4](https://github.com/sdenec/tidy5e-sheet)            | :heavy_check_mark: |        :x:         | Localization of Ability Scores Breaks Layout |
-| [Monster Blocks v0.9.1](https://github.com/syl3r86/BetterNPCSheet5e)      |     :warning:      |     :warning:      | Incompatible. Very much broken.              |
-| [Better NPC Sheet 5e v0.9.1](https://github.com/syl3r86/BetterNPCSheet5e) | :heavy_check_mark: | :heavy_check_mark: | Might require resizing of the window.        |
+| **Name**                                                                  |       Skills       |   Ability Scores   | Notes                                                    |
+| ------------------------------------------------------------------------- | :----------------: | :----------------: | -------------------------------------------------------- |
+| Default dnd5e system NPC sheet                                            | :heavy_check_mark: | :heavy_check_mark: | Module customizations were needed.                       |
+| [Tidy 5e Sheet v0.3.4](https://github.com/sdenec/tidy5e-sheet)            | :heavy_check_mark: |        :x:         | Localization of Ability Scores Breaks Layout             |
+| [Monster Blocks v0.9.1](https://github.com/syl3r86/BetterNPCSheet5e)      | :heavy_check_mark: | :heavy_check_mark: | Localization of Ability Scores Breaks, Layout not ideal. |
+| [Better NPC Sheet 5e v0.9.1](https://github.com/syl3r86/BetterNPCSheet5e) | :heavy_check_mark: | :heavy_check_mark: | Might require resizing of the window.                    |
 
 
 ### Other Compatibilities
@@ -67,6 +67,7 @@ I'm honestly not sure how well this will play with modules that make assumptions
 
 - DO NOT DISABLE THIS MODULE IF YOU HAVE CONFIGURED A CUSTOM SKILL OR ABILITY SCORE.
 - The issues involving the character sheets above should be considered known issues. I am not inclined to fix these within this module as the fixes will quickly add more problems than solutions.
+- Localization of Custom Ability Scores on certain NPC Sheets is broken. If there's enough issues opened about this I'll see if I can fix it.
 
 ## Acknowledgements
 
