@@ -6,7 +6,7 @@
 [![ko-fi](https://img.shields.io/badge/-buy%20me%20a%20coke-%23FF5E5B)](https://ko-fi.com/elffriend)
 
 
-This module allows a GM to define custom Ability Scores and Skills for the dnd5e system. The goal is to allow other alternative rulesets to be configured in this module eventually as well.
+This module allows a GM to define custom Ability Scores and Skills for the dnd5e system. This is the full scope of this module, any additional alternative rules should be created into other modules instead of tacked onto this one.
 
 ## ⚠️⚠️⚠️ Warnings ⚠️⚠️⚠️
 
