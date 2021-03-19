@@ -1,6 +1,10 @@
 # D&D5e Extender
 
-> This version of the dnd5e Extender has been discontinued in favor of [Cole's rewrite](https://github.com/schultzcole/FVTT-DND5e-Extender). Cole was able to make the mechanisms of this concept safer, if not fully safe and thus I would advise any interested in this functionality to consider that instead of this.
+This version of the dnd5e Extender has been discontinued in favor of [Cole's rewrite](https://github.com/schultzcole/FVTT-DND5e-Extender). Cole was able to make the mechanisms of this concept safer, if not fully safe and thus I would advise any interested in this functionality to consider that instead of this.
+
+---
+
+## Original Readme
 
 
 This module allows a GM to define custom Ability Scores and Skills for the dnd5e system. This is the full scope of this module, any additional alternative rules should be created into other modules instead of tacked onto this one.
