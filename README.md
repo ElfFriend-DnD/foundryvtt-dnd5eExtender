@@ -1,9 +1,6 @@
 # D&D5e Extender
 
-![Latest Release Download Count](https://img.shields.io/badge/dynamic/json?label=Downloads@latest&query=assets%5B1%5D.download_count&url=https%3A%2F%2Fapi.github.com%2Frepos%2FElfFriend-DnD%2Ffoundryvtt-dnd5eExtender%2Freleases%2Flatest)
-![Forge Installs](https://img.shields.io/badge/dynamic/json?label=Forge%20Installs&query=package.installs&suffix=%25&url=https%3A%2F%2Fforge-vtt.com%2Fapi%2Fbazaar%2Fpackage%2Fdnd5e-extender&colorB=4aa94a)
-![Foundry Core Compatible Version](https://img.shields.io/badge/dynamic/json.svg?url=https%3A%2F%2Fraw.githubusercontent.com%2FElfFriend-DnD%2Ffoundryvtt-dnd5eExtender%2Fmain%2Fsrc%2Fmodule.json&label=Foundry%20Version&query=$.compatibleCoreVersion&colorB=orange)
-[![ko-fi](https://img.shields.io/badge/-buy%20me%20a%20coke-%23FF5E5B)](https://ko-fi.com/elffriend)
+> This version of the dnd5e Extender has been discontinued in favor of [Cole's rewrite](https://github.com/schultzcole/FVTT-DND5e-Extender). Cole was able to make the mechanisms of this concept safer, if not fully safe and thus I would advise any interested in this functionality to consider that instead of this.
 
 
 This module allows a GM to define custom Ability Scores and Skills for the dnd5e system. This is the full scope of this module, any additional alternative rules should be created into other modules instead of tacked onto this one.
